@@ -64,7 +64,6 @@ module.exports = {
                 leadingUnderscore: 'forbid',
                 trailingUnderscore: 'forbid',
               },
-            
               {
                 selector: 'typeLike',
                 format: ['PascalCase'],
