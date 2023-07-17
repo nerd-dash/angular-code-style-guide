@@ -1,15 +1,15 @@
 # My Angular coding style guide
 
-This guide line has as a fallback the [ Angular coding style guide](https://angular.io/guide/styleguide), if you find something that this document does note cover please check it.
+This guide line has as a fallback the [ Angular coding style guide](https://angular.io/guide/styleguide), if you find something that this document **does not cover** please check it.
 
 ---
 
 > **Legend :**<br>
 > 🧑‍🔬🔎 - Requires manual verification<br>
-> 🤖  - Has an automated process of verification<br>
-> 👷  - Verification on process of automation<br>
-> ❌  - Invalid, negative or bad practice<br>
-> ✅  - Valid, positive, checked or good practice<br>
+> 🤖 - Has an automated process of verification<br>
+> 👷 - Verification on process of automation<br>
+> ❌ - Invalid, negative or bad practice<br>
+> ✅ - Valid, positive, checked or good practice<br>
 
 ## Section 01 - Creating a Standard.
 
@@ -29,7 +29,7 @@ We are going to use every kind of technology, like _linters and scripts_, approv
 
 ### Rule 02-01 - File naming convention. 🤖
 
-Every file below `src/app` should have a suffix that describes the propose of this file.
+Every file below `src/app` should have a suffix that describes the propose of this file. The **only exception** to this rule are the `index.ts` files used as barrels.
 This rule is an extension of [Angular's General Naming Guidelines](https://angular.io/guide/styleguide#general-naming-guidelines).
 
 Every file that represent the following types like:
@@ -41,6 +41,8 @@ Every file that represent the following types like:
 - `service`
 - `interface`
 - `type`
+- `enum`
+- `utils`
 
 Should be named with this pattern `<feature>.<type>.ts|html|scss|spec.ts` .
 
@@ -175,3 +177,87 @@ Should be named with this pattern `<feature>.<type>.ts|html|scss|spec.ts` .
         ],
       },
 ```
+
+### Rule 02-07 - Folders structures. 👷
+
+Every single folder have to be named using `kebab-case`.
+
+Empty folders are **not** allowed.
+
+Aside to the app component files there should be only `features/` and `shared/` folders under `src/app`.
+All the logic that is specific created to a feature should be place on a sub-folder under `features/`. For every feature it should have a folder named as the feature and several sub folders named according to the functionality of the files on this folder. Reusable elements have to be placed under `shared/` and inside this one we also have sub folders named according to the functionality of the files on this folder.
+
+So the skeleton of the folder structure should be something like this:
+
+```typescript
+
+root/
+├─ src/
+│  ├─ app/
+│  │  ├─ features/
+│  │  │  ├─ feature-a/
+│  │  │  │  ├─ containers/
+│  │  │  │  │   ├─ view-a/
+│  │  │  │  │   │  ├─ view-a.component.ts
+│  │  │  │  │   │  ├─ view-a.component.html
+│  │  │  │  │   │  ├─ view-a.component.scss
+│  │  │  │  │   │  ├─ view-a.component.spec.ts
+│  │  │  │  │   ├─ view-b/
+│  │  │  │  │   │  ├─ ...
+│  │  │  │  ├─ models/
+│  │  │  │  │   ├─ feature-a.interface.ts
+│  │  │  │  │   ├─ feature-a.enum.ts
+│  │  │  │  │   ├─ feature-a.type.ts
+│  │  │  │  │   ├─ feature-a.routes.enum.ts
+│  │  │  │  ├─ utils/
+│  │  │  │  │   ├─ feature-a.utils.ts
+│  │  │  │  ├─ services/
+│  │  │  │  │   ├─ feature-a.http.service.ts
+│  │  │  │  │   ├─ feature-a.web-sockets.service.ts
+│  │  │  │  ├─ store/
+│  │  │  │  │   ├─ feature-a.actions.ts
+│  │  │  │  │   ├─ feature-a.reducer.ts
+│  │  │  │  │   ├─ feature-a.selectors.ts
+│  │  │  │  │   ├─ feature-a.effects.ts
+│  │  │  │  ├─ feature-a.module.ts
+│  │  │  │  ├─ feature-a.routing.module.ts
+│  │  │  ├─ feature-b/
+│  │  │  │  ├─ .../
+│  │  │  ├─ .../
+│  │  ├─ shared/
+│  │  │  ├─ components/
+│  │  │  │  ├─ shared-a/
+│  │  │  │  │  ├─ shared-a.component.ts
+│  │  │  │  │  ├─ shared-a.component.html
+│  │  │  │  │  ├─ shared-a.component.scss
+│  │  │  │  │  ├─ shared-a.component.spec.ts
+│  │  │  │  ├─ shared-b/
+│  │  │  │  │  ├─ ...
+│  │  │  ├─ services/
+│  │  │  │  ├─ shared-a/
+│  │  │  │  │  ├─ shared-a.http.service.ts
+│  │  │  │  │  ├─ shared-a.web-socket.service.ts
+│  │  │  │  ├─ shared-b/
+│  │  │  │  │  ├─ ...
+│  │  │  ├─ models/
+│  │  │  │  ├─ shared-a.type.ts
+│  │  │  │  ├─ shared-b.interface.ts
+│  │  │  │  ├─ shared-c.enum.ts
+│  │  │  ├─ utils/
+│  │  │  │  ├─ shared-a.utils.ts
+│  │  │  │  ├─ shared-b.utils.ts
+│  │  │  │  ├─ shared-c.utils.ts
+│  │  ├─ app.*.ts
+│  │  ├─ ...
+
+```
+
+`models/` - Should contain only files that define data structures or constants like `interfaces`, `types` and `enums` related to the feature or the whole application when on `shared/`.
+
+`services/` - Should contain only files that manipulate data related to the feature or the whole application when on `shared/`.
+
+`utils/` - Should contain only files that contain helper functions related to the feature or the whole application when on `shared/`.
+
+`components/` - Also can be called `ui/`. It should contain the presentational component that does not have any logic or access services. It also can be composed by other shared components. Usually it holds heavy stylization and have inputs and outputs boundaries to communicate with other components. _(Dumb components)_
+
+`containers/` - Also can be called `views/` or `ui/`. It should contain the components that interact with services or store. It also can be composed by other shared components. Usually it holds little stylization and 'contains' the other components. _(Smart components)_
