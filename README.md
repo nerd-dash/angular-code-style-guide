@@ -29,7 +29,7 @@ We are going to use every kind of technology, like _linters and scripts_, approv
 
 ### Rule 02-01 - File naming convention. 🤖
 
-Every file below `src/app` should have a suffix that describes the propose of this file. The **only exception** to this rule are the `index.ts` files used as barrels.
+Files are named using `kebab-case` and `dots` only. Every file below `src/app` should have a suffix, limited by dots, that describes the propose of this file. The **only exception** to this rule are the `index.ts` files used as barrels.
 This rule is an extension of [Angular's General Naming Guidelines](https://angular.io/guide/styleguide#general-naming-guidelines).
 
 Every file that represent the following types like:
@@ -44,7 +44,12 @@ Every file that represent the following types like:
 - `enum`
 - `utils`
 
-Should be named with this pattern `<feature>.<type>.ts|html|scss|spec.ts` .
+Some files may have an additonal pre-suffix that give additional information about it. Ex:
+`feature-a.http.service.ts`
+`feature-a.web-socket.service.ts`
+`feature-a.routing.module.ts`
+
+Should be named with this pattern `<feature>.(<pre-suffix>.)<type>.ts|html|scss|spec.ts` .
 
 ```typescript
 // Eslint rules status = 👷
