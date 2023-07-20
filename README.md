@@ -44,12 +44,12 @@ Every file that represent the following types like:
 - `enum`
 - `utils`
 
-Some files may have an additonal pre-suffix that give additional information about it. Ex:
-`feature-a.http.service.ts`
-`feature-a.web-socket.service.ts`
-`feature-a.routing.module.ts`
+Some files may have an additional pre-suffix that give additional information about it. Ex:<br>
+`feature-a-http.service.ts`<br>
+`feature-a-web-socket.service.ts`<br>
+`feature-a-routing.module.ts`<br>
 
-Should be named with this pattern `<feature>.(<pre-suffix>.)<type>.ts|html|scss|spec.ts` .
+Should be named with this pattern `<feature>(-<pre-suffix>).<type>.ts|html|scss|spec.ts` .
 
 ```typescript
 // Eslint rules status = 👷
@@ -196,64 +196,66 @@ So the skeleton of the folder structure should be something like this:
 
 ```typescript
 
-root/
-├─ src/
-│  ├─ app/
-│  │  ├─ features/
-│  │  │  ├─ feature-a/
-│  │  │  │  ├─ containers/
-│  │  │  │  │   ├─ view-a/
-│  │  │  │  │   │  ├─ view-a.component.ts
-│  │  │  │  │   │  ├─ view-a.component.html
-│  │  │  │  │   │  ├─ view-a.component.scss
-│  │  │  │  │   │  ├─ view-a.component.spec.ts
-│  │  │  │  │   ├─ view-b/
-│  │  │  │  │   │  ├─ ...
-│  │  │  │  ├─ models/
-│  │  │  │  │   ├─ feature-a.interface.ts
-│  │  │  │  │   ├─ feature-a.enum.ts
-│  │  │  │  │   ├─ feature-a.type.ts
-│  │  │  │  │   ├─ feature-a.routes.enum.ts
-│  │  │  │  ├─ utils/
-│  │  │  │  │   ├─ feature-a.utils.ts
-│  │  │  │  ├─ services/
-│  │  │  │  │   ├─ feature-a.http.service.ts
-│  │  │  │  │   ├─ feature-a.web-sockets.service.ts
-│  │  │  │  ├─ store/
-│  │  │  │  │   ├─ feature-a.actions.ts
-│  │  │  │  │   ├─ feature-a.reducer.ts
-│  │  │  │  │   ├─ feature-a.selectors.ts
-│  │  │  │  │   ├─ feature-a.effects.ts
-│  │  │  │  ├─ feature-a.module.ts
-│  │  │  │  ├─ feature-a.routing.module.ts
-│  │  │  ├─ feature-b/
-│  │  │  │  ├─ .../
-│  │  │  ├─ .../
-│  │  ├─ shared/
-│  │  │  ├─ components/
-│  │  │  │  ├─ shared-a/
-│  │  │  │  │  ├─ shared-a.component.ts
-│  │  │  │  │  ├─ shared-a.component.html
-│  │  │  │  │  ├─ shared-a.component.scss
-│  │  │  │  │  ├─ shared-a.component.spec.ts
-│  │  │  │  ├─ shared-b/
-│  │  │  │  │  ├─ ...
-│  │  │  ├─ services/
-│  │  │  │  ├─ shared-a/
-│  │  │  │  │  ├─ shared-a.http.service.ts
-│  │  │  │  │  ├─ shared-a.web-socket.service.ts
-│  │  │  │  ├─ shared-b/
-│  │  │  │  │  ├─ ...
-│  │  │  ├─ models/
-│  │  │  │  ├─ shared-a.type.ts
-│  │  │  │  ├─ shared-b.interface.ts
-│  │  │  │  ├─ shared-c.enum.ts
-│  │  │  ├─ utils/
-│  │  │  │  ├─ shared-a.utils.ts
-│  │  │  │  ├─ shared-b.utils.ts
-│  │  │  │  ├─ shared-c.utils.ts
-│  │  ├─ app.*.ts
-│  │  ├─ ...
+// Folder tree pattern example
+
+📁root/
+├─📁src/
+│  ├─📁app/
+│  │  ├─📁features/
+│  │  │  ├─📁feature-a/
+│  │  │  │  ├─📁containers/
+│  │  │  │  │   ├─📁view-a/
+│  │  │  │  │   │  ├─📄view-a.component.ts
+│  │  │  │  │   │  ├─📄view-a.component.html
+│  │  │  │  │   │  ├─📄view-a.component.scss
+│  │  │  │  │   │  ├─📄view-a.component.spec.ts
+│  │  │  │  │   ├─📁view-b/
+│  │  │  │  │   │  ├─📄...
+│  │  │  │  ├─📁models/
+│  │  │  │  │   ├─📄feature-a.interface.ts
+│  │  │  │  │   ├─📄feature-a.enum.ts
+│  │  │  │  │   ├─📄feature-a.type.ts
+│  │  │  │  │   ├─📄feature-a.routes.enum.ts
+│  │  │  │  ├─📁utils/
+│  │  │  │  │   ├─📄feature-a.utils.ts
+│  │  │  │  ├─📁services/
+│  │  │  │  │   ├─📄feature-a-http.service.ts
+│  │  │  │  │   ├─📄feature-a-web-sockets.service.ts
+│  │  │  │  ├─📁store/
+│  │  │  │  │   ├─📄feature-a.actions.ts
+│  │  │  │  │   ├─📄feature-a.reducer.ts
+│  │  │  │  │   ├─📄feature-a.selectors.ts
+│  │  │  │  │   ├─📄feature-a.effects.ts
+│  │  │  │  ├─📄feature-a.module.ts
+│  │  │  │  ├─📄feature-a-routing.module.ts
+│  │  │  ├─📁feature-b/
+│  │  │  │  ├─📄.../
+│  │  │  ├─📄.../
+│  │  ├─📁shared/
+│  │  │  ├─📁components/
+│  │  │  │  ├─📁shared-a/
+│  │  │  │  │  ├─📄shared-a.component.ts
+│  │  │  │  │  ├─📄shared-a.component.html
+│  │  │  │  │  ├─📄shared-a.component.scss
+│  │  │  │  │  ├─📄shared-a.component.spec.ts
+│  │  │  │  ├─📁shared-b/
+│  │  │  │  │  ├─📄...
+│  │  │  ├─📁services/
+│  │  │  │  ├─📁shared-a/
+│  │  │  │  │  ├─📄shared-a-http.service.ts
+│  │  │  │  │  ├─📄shared-a-web-socket.service.ts
+│  │  │  │  ├─📁shared-b/
+│  │  │  │  │  ├─📄...
+│  │  │  ├─📁models/
+│  │  │  │  ├─📄shared-a.type.ts
+│  │  │  │  ├─📄shared-b.interface.ts
+│  │  │  │  ├─📄shared-c.enum.ts
+│  │  │  ├─📁utils/
+│  │  │  │  ├─📄shared-a.utils.ts
+│  │  │  │  ├─📄shared-b.utils.ts
+│  │  │  │  ├─📄shared-c.utils.ts
+│  │  ├─📄app.*.ts
+│  │  ├─📄...
 
 ```
 
@@ -266,3 +268,79 @@ root/
 `components/` - Also can be called `ui/`. It should contain the presentational component that does not have any logic or access services. It also can be composed by other shared components. Usually it holds heavy stylization and have inputs and outputs boundaries to communicate with other components. _(Dumb components)_
 
 `containers/` - Also can be called `views/` or `ui/`. It should contain the components that interact with services or store. It also can be composed by other shared components. Usually it holds little stylization and 'contains' the other components. _(Smart components)_
+
+### Rule 02-08 - Members ordering. 👷
+
+According to the visibility, modifiers and type they can be ordered applying first the `modifiers`, `visibility modifiers` then `members types`, that are:
+
+`modifiers order`
+
+- signature
+- static
+- decorated
+- instance
+- abstract
+- regular
+
+`visibility modifiers order`
+
+- public
+- protected
+- private
+- #private
+- no modifiers
+
+`members types order`
+- index signatures
+- fields
+- static initialization
+- constructors 
+- getters
+- setters
+- methods. 
+
+> Some very special cases it could differ but it is considered a `code smell`.<br>
+> Check this [link](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-ordering.md#orders) to learn more about modifiers, visibility and types.
+
+```typescript
+// Example
+
+❌ export class TetsComponent {
+
+  private aMethod = () => {
+    console.log(`this should be after constructor`)
+  }
+
+  otherMethod(){
+    this.aMethod()
+  }
+
+  constructor(){
+    this.aField = `a string`
+  }
+
+  aField : string;
+}
+
+✅ export class TetsComponent {
+  aField: string;
+
+  constructor() {
+    this.aField = `a string`;
+  }
+
+  otherMethod() {
+    this.aMethod();
+  }
+
+  private aMethod = () => {
+    console.log(`this should be after constructor`);
+  };
+}
+
+// Eslint rules status = ✅
+    rules: {
+        ...
+        "@typescript-eslint/member-ordering": "error",
+      },
+```

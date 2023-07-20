@@ -13,7 +13,7 @@ module.exports = {
         "plugin:@typescript-eslint/recommended",
         "plugin:@angular-eslint/recommended",
         "plugin:@angular-eslint/template/process-inline-templates",
-        "plugin:angular-file-naming/recommended"
+        "plugin:angular-file-naming/recommended",
       ],
       rules: {
         "@angular-eslint/directive-selector": [
@@ -32,7 +32,8 @@ module.exports = {
             style: "kebab-case",
           },
         ],
-        "@typescript-eslint/naming-convention": "error"
+        "@typescript-eslint/naming-convention": "error",
+        "@typescript-eslint/member-ordering": "error",
       },
       overrides: [
         {
@@ -53,22 +54,23 @@ module.exports = {
                 format: ["UPPER_CASE"],
               },
               {
-                selector: 'default',
-                format: ['camelCase'],
-                leadingUnderscore: 'forbid',
-                trailingUnderscore: 'forbid',
-              },            
-              {
-                selector: 'variable',
-                format: ['camelCase'],
-                leadingUnderscore: 'forbid',
-                trailingUnderscore: 'forbid',
+                selector: "default",
+                format: ["camelCase"],
+                leadingUnderscore: "forbid",
+                trailingUnderscore: "forbid",
               },
               {
-                selector: 'typeLike',
-                format: ['PascalCase'],
+                selector: "variable",
+                format: ["camelCase"],
+                leadingUnderscore: "forbid",
+                trailingUnderscore: "forbid",
+              },
+              {
+                selector: "typeLike",
+                format: ["PascalCase"],
               },
             ],
+            
           },
         },
       ],
