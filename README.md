@@ -291,13 +291,14 @@ According to the visibility, modifiers and type they can be ordered applying fir
 - no modifiers
 
 `members types order`
+
 - index signatures
 - fields
 - static initialization
-- constructors 
+- constructors
 - getters
 - setters
-- methods. 
+- methods.
 
 > Some very special cases it could differ but it is considered a `code smell`.<br>
 > Check this [link](https://github.com/typescript-eslint/typescript-eslint/blob/main/packages/eslint-plugin/docs/rules/member-ordering.md#orders) to learn more about modifiers, visibility and types.
@@ -342,5 +343,75 @@ According to the visibility, modifiers and type they can be ordered applying fir
     rules: {
         ...
         "@typescript-eslint/member-ordering": "error",
+      },
+```
+
+### Rule 02-08 - Naming Observables.
+
+Observables should be named `camelCase` just like a regular member but it should contain a `$` suffix. Ex:
+
+```typescript
+// Example
+
+❌
+export class TestClass {
+   public aObservable : Observable<unknown>;
+}
+
+✅ export class TestClass {
+  public aObservable$ : Observable<unknown>;
+}
+
+// Eslint rules status = ✅
+    plugins: ["rxjs"],
+    rules: {
+        ...
+        "rxjs/finnish": [
+          "error",
+          {
+            types: {
+              "^EventEmitter$": false,
+              "^Subject$": false,
+            },
+          },
+        ],
+    },
+```
+
+### Rule 02-08 - Naming Subjects.
+
+Subjects should be named `camelCase` just like a regular member but it should contain a `Subject` suffix. Ex:
+
+```typescript
+// Example
+
+❌
+export class TestClass {
+   public aValue : Subject<unknown>;
+}
+
+✅ export class TestClass {
+  public aValueSubject : Subject<unknown>;
+}
+
+// Eslint rules status = ✅
+    plugins: ["rxjs"],
+    rules: {
+        ...
+        "rxjs/suffix-subjects": [
+          "error",
+          {
+              "functions": true,
+              "methods": true,
+              "parameters": true,
+              "properties": true,
+              "strict": false,
+            "suffix": "Subject",
+            "types": {
+              "^EventEmitter$": false
+            },
+            "variables": true,
+          }
+        ]
       },
 ```

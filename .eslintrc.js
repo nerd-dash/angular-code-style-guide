@@ -8,6 +8,7 @@ module.exports = {
         project: ["tsconfig.json"],
         createDefaultProgram: true,
       },
+      plugins: ["rxjs", "rxjs-angular"],
       extends: [
         "eslint:recommended",
         "plugin:@typescript-eslint/recommended",
@@ -32,48 +33,70 @@ module.exports = {
             style: "kebab-case",
           },
         ],
-        "@typescript-eslint/naming-convention": "error",
-        "@typescript-eslint/member-ordering": "error",
-      },
-      overrides: [
-        {
-          files: ["*.ts"],
-          rules: {
-            "@typescript-eslint/naming-convention": [
-              "error",
-              {
-                selector: "interface",
-                format: ["PascalCase"],
-                custom: {
-                  regex: "^I[A-Z]",
-                  match: false,
-                },
-              },
-              {
-                selector: "enumMember",
-                format: ["UPPER_CASE"],
-              },
-              {
-                selector: "default",
-                format: ["camelCase"],
-                leadingUnderscore: "forbid",
-                trailingUnderscore: "forbid",
-              },
-              {
-                selector: "variable",
-                format: ["camelCase"],
-                leadingUnderscore: "forbid",
-                trailingUnderscore: "forbid",
-              },
-              {
-                selector: "typeLike",
-                format: ["PascalCase"],
-              },
-            ],
-            
+        "@typescript-eslint/naming-convention": [
+          "error",
+          {
+            selector: "interface",
+            format: ["PascalCase"],
+            custom: {
+              regex: "^I[A-Z]",
+              match: false,
+            },
           },
-        },
-      ],
+          {
+            selector: "enumMember",
+            format: ["UPPER_CASE"],
+          },
+          {
+            selector: "default",
+            format: ["camelCase"],
+            leadingUnderscore: "forbid",
+            trailingUnderscore: "forbid",
+          },
+          {
+            selector: "variable",
+            format: ["camelCase"],
+            leadingUnderscore: "forbid",
+            trailingUnderscore: "forbid",
+          },
+          {
+            selector: "typeLike",
+            format: ["PascalCase"],
+          },
+        ],
+        "@typescript-eslint/member-ordering": "error",
+        "rxjs/finnish": [
+          "error",
+          {
+            functions: true,
+            methods: true,
+            parameters: true,
+            properties: true,
+            variables: true,
+            strict: false,
+            types: {
+              "^EventEmitter$": false,
+              "^Subject$": false,
+            },
+          },
+        ],
+        "rxjs-angular/prefer-async-pipe": "error",
+        "rxjs/suffix-subjects": [
+          "error",
+          {
+            functions: true,
+            methods: true,
+            parameters: true,
+            properties: true,
+            variables: true,
+
+            suffix: "Subject",
+            types: {
+              "^EventEmitter$": false,
+            },
+          },
+        ],
+      },
     },
     {
       files: ["*.html"],
