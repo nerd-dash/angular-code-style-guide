@@ -1,0 +1,109 @@
+{
+  "$schema": "node_modules/eslint-plugin-project-structure/projectStructurerc.schema.json",
+  "ignorePatterns": [
+    "src/assets/",
+    "src/environments/*",
+    "src/index.html",
+    "src/main.ts",
+    "src/polyfills.ts"
+  ],
+  "structure": {
+    "name": "src",
+    "children": [
+      {
+        "name": "app",
+        "children": [
+          {
+            "name": "features",
+            "children": [
+              {
+                "ruleId": "feature-rule"
+              }
+            ]
+          },
+          {
+            "name": "shared",
+            "children": []
+          },
+          {
+            "ruleId": "module-rule"
+          }
+        ]
+      }
+    ]
+  },
+  "rules": {
+    "module-rule": {
+      "name": "/^${{parentName}}([\\-]?[a-z]+)*.(component|module)$/",
+      "extension": ["ts", "html"]
+    },
+    "feature-rule": {
+      "name": "/^${{kebab-case}}?/",
+      "children": [
+        {
+          "ruleId": "component-container-rule"
+        },
+        {
+          "ruleId": "models-rule"
+        },
+        {
+          "ruleId": "utils-rule"
+        },
+        {
+          "ruleId": "services-rule"
+        },
+        {
+          "ruleId": "store-rule"
+        },
+        {
+          "ruleId": "module-rule"
+        }
+      ]
+    },
+    "component-container-rule": {
+      "name": "/^(containers|components)$/",
+      "children": [
+        {
+          "name": "/^${{kebab-case}}.component+/",
+          "extension": ["html", "ts"]
+        }
+      ]
+    },
+    "models-rule": {
+      "name": "/^models$/",
+      "children": [
+        {
+          "name": "/^${{kebab-case}}.(model|enum|interface|type)+/",
+          "extension": ["html", "ts"]
+        }
+      ]
+    },
+    "utils-rule": {
+      "name": "/^utils$/",
+      "children": [
+        {
+          "name": "/^${{kebab-case}}.(utils)+/",
+          "extension": ["html", "ts"]
+        }
+      ]
+    },
+    "services-rule": {
+      "name": "/^services$/",
+      "children": [
+        {
+          "name": "/^${{kebab-case}}.(service)+/",
+          "extension": ["html", "ts"]
+        }
+      ]
+    },
+    "store-rule": {
+      "name": "/^store$/",
+      "children": [
+        {
+          "name": "/^${{kebab-case}}.(actions|reducers|selectors|effects)+/",
+          "extension": ["html", "ts"]
+        }
+      ]
+    }
+  }
+}
