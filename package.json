@@ -1,0 +1,48 @@
+{
+  "name": "angular-code-style-guide",
+  "version": "0.0.1",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "watch": "ng build --watch --configuration development",
+    "lint": "ng lint --debug",
+    "prepare": "husky install"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "^14.2.0",
+    "@angular/common": "^14.2.0",
+    "@angular/compiler": "^14.2.0",
+    "@angular/core": "^14.2.0",
+    "@angular/forms": "^14.2.0",
+    "@angular/platform-browser": "^14.2.0",
+    "@angular/platform-browser-dynamic": "^14.2.0",
+    "@angular/router": "^14.2.0",
+    "rxjs": "~7.5.0",
+    "tslib": "^2.3.0",
+    "zone.js": "~0.11.4"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^14.2.8",
+    "@angular-eslint/builder": "14.4.0",
+    "@angular-eslint/eslint-plugin": "14.4.0",
+    "@angular-eslint/eslint-plugin-template": "14.4.0",
+    "@angular-eslint/schematics": "14.4.0",
+    "@angular-eslint/template-parser": "14.4.0",
+    "@angular/cli": "~14.2.8",
+    "@angular/compiler-cli": "^14.2.0",
+    "@typescript-eslint/eslint-plugin": "^6.4.0",
+    "@typescript-eslint/parser": "^6.4.0",
+    "eslint": "^8.28.0",
+    "eslint-config-prettier": "^9.0.0",
+    "eslint-plugin-angular-file-naming": "^1.0.6",
+    "eslint-plugin-project-structure": "^1.3.9",
+    "eslint-plugin-rxjs": "^5.0.3",
+    "eslint-plugin-rxjs-angular": "^2.0.1",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.3.0",
+    "prettier": "3.0.2",
+    "typescript": "~4.7.2"
+  }
+}
