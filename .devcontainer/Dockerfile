@@ -1,0 +1,3 @@
+ARG VARIANT
+FROM node:${VARIANT}
+USER root
